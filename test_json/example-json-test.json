@@ -1,0 +1,88 @@
+{
+  "admin_user": [
+    {
+      "test_name": "container_list",
+      "dependencies": [
+        {
+          "test_name": "container_create",
+          "required": [
+            "id",
+            "email",
+            "hashed_password",
+            "role_id",
+            "partition_admin",
+            "status"
+          ]
+        },
+        {
+          "test_name": "container_update",
+          "required": ["admin_user_id", "admin_role_id"]
+        },
+        {
+          "test_name": "container_update2",
+          "required": [
+            "admin_user_id",
+            "email",
+            "hashed_password",
+            "role_id",
+            "partition_admin"
+          ]
+        }
+      ],
+      "method": "GET",
+      "url": " YOUR_URL",
+      "response_code": 200
+    },
+    {
+      "test_name": "container_create",
+      "method": "POST",
+      "data": {
+        "id": 20,
+        "email": "user@example.com",
+        "hashed_password": "string",
+        "first_name": "string",
+        "last_name": "string",
+        "role_id": 0,
+        "partition_admin": true,
+        "status": 1
+      },
+      "url": "YOUR_URL",
+      "response_code": 200
+    },
+    {
+      "method": "PATCH",
+      "url_parameters": {
+        "admin_user_id": 1,
+        "admin_role_id": 1
+      },
+
+      "url": "YOUR_URL/{admin_user_id}?admin_role_id={admin_role_id}",
+      "response_code": 200
+    },
+    {
+      "method": "PATCH",
+      "data": {
+        "email": "user@example.com",
+        "hashed_password": "string",
+        "first_name": "string",
+        "last_name": "string",
+        "role_id": 0,
+        "partition_admin": true
+      },
+      "url_parameters": {
+        "admin_user_id": 1
+      },
+      "url": "YOUR_URL/{admin_user_id}",
+      "response_code": 200
+    },
+    {
+      "method": "DELETE",
+      "url_parameters": {
+        "admin_user_id": 0
+      },
+
+      "url": "YOUR_URL/{admin_user_id}",
+      "response_code": 200
+    }
+  ]
+}
